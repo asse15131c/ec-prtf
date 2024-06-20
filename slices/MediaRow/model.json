@@ -1,0 +1,44 @@
+{
+  "id": "media_row",
+  "type": "SharedSlice",
+  "name": "MediaRow",
+  "description": "MediaRow",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "size": {
+          "type": "Select",
+          "config": {
+            "label": "Size",
+            "placeholder": "",
+            "options": ["2", "3", "auto"]
+          }
+        },
+        "media_items": {
+          "type": "Group",
+          "config": {
+            "label": "MediaItems",
+            "repeat": true,
+            "fields": {
+              "media": {
+                "type": "Link",
+                "config": {
+                  "label": "Media",
+                  "placeholder": "",
+                  "select": "media"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
