@@ -91,7 +91,22 @@ interface IndexDocumentData {
 export type IndexDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithoutUID<Simplify<IndexDocumentData>, "index", Lang>;
 
-type ProjectDocumentDataSlicesSlice = MediaRowSlice;
+/**
+ * Item in *Project → Gallery*
+ */
+export interface ProjectDocumentDataGalleryItem {
+  /**
+   * Media field in *Project → Gallery*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.gallery[].media
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  media: prismic.LinkToMediaField;
+}
+
+type ProjectDocumentDataSlicesSlice = never;
 
 /**
  * Content for Project documents
@@ -131,6 +146,17 @@ interface ProjectDocumentData {
   year: prismic.KeyTextField;
 
   /**
+   * Credits title field in *Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.credits_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  credits_title: prismic.KeyTextField;
+
+  /**
    * Credits field in *Project*
    *
    * - **Field Type**: Link
@@ -142,6 +168,17 @@ interface ProjectDocumentData {
   credits: prismic.LinkField;
 
   /**
+   * Website title field in *Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.website_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  website_title: prismic.KeyTextField;
+
+  /**
    * Website field in *Project*
    *
    * - **Field Type**: Link
@@ -151,6 +188,28 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   website: prismic.LinkField;
+
+  /**
+   * Description field in *Project*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Gallery field in *Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.gallery[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  gallery: prismic.GroupField<Simplify<ProjectDocumentDataGalleryItem>>;
 
   /**
    * Slice Zone field in *Project*
@@ -301,6 +360,7 @@ declare module "@prismicio/client" {
       IndexDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
+      ProjectDocumentDataGalleryItem,
       ProjectDocumentDataSlicesSlice,
       AllDocumentTypes,
       MediaRowSlice,

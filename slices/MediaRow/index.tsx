@@ -4,8 +4,7 @@ import { SliceComponentProps } from "@prismicio/react";
 /**
  * Props for `MultimediaRow`.
  */
-export type MultimediaRowProps =
-  SliceComponentProps<Content.MultimediaRowSlice>;
+export type MultimediaRowProps = SliceComponentProps<Content.MediaRowSlice>;
 
 /**
  * Component for "MultimediaRow" Slices.
