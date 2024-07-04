@@ -14,25 +14,19 @@ const config: Config = {
   theme: {
     extend: {
       spacing: {
-        // sm: "0.5rem", // 8px
-        // base: "0.75rem", // 12px
-        // md: "1.125rem", // 18px
-        // lg: "1.5rem", // 24px
-
-        sm: "4px", // 4px
-        base: "6px", // 6px
-        md: "9px", // 9px
-        lg: "12px", // 12px
+        sm: "0.25rem", // 4px
+        base: "0.375rem", // 6px
+        md: "0.5625rem", // 9px
+        lg: "0.75rem", // 12px
       },
       fontFamily: {
-        textGyreHero: [
-          "var(--font-textGyreHero)",
+        neueHaasUnica: [
+          "var(--font-neueHaasUnica)",
           ...defaultTheme.fontFamily.sans,
         ],
       },
     },
     fontSize: {
-      // base: "1.0625rem", // 17px
       base: "12px", // 17px
     },
     colors: {

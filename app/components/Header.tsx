@@ -100,7 +100,7 @@ export function Header() {
           <div className="flex flex-col">
             <a
               className={clsx(
-                "inline-block  text-blue underline pt-0.5 pb-[2px]",
+                "inline-block  text-blue underline pt-0.5 pb-[2px] w-auto mr-auto",
                 "hover:bg-blue hover:text-white",
                 "gsap:scrumble"
               )}

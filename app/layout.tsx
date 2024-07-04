@@ -4,20 +4,18 @@ import { repositoryName } from "@/prismicio";
 import localFont from "next/font/local";
 
 import "./globals.css";
+import Head from "next/head";
 
-import { Favicon } from "./components/Favicon";
-
-const textGyreHero = localFont({
+const neueHaasUnica = localFont({
   src: [
     {
       path: "../public/fonts/NeueHaasUnica-Medium.woff",
-      // path: "../public/fonts/TeXGyreHerosCondensed-Regular.woff",
 
       weight: "700",
       style: "normal",
     },
   ],
-  variable: "--font-textGyreHero",
+  variable: "--font-neueHaasUnica",
 });
 
 export const metadata: Metadata = {
@@ -32,11 +30,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <Favicon /> */}
-      {/* <link rel="icon" href="/favicon.ico" sizes="any" /> */}
-      <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-      <link rel="icon" type="image/png" href="/images/favicon.png"></link>
-      <body className={textGyreHero.variable}>
+      <Head>
+        <meta property="og:image" content="http://elenacatani.com/api/og" />
+        <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
+        <link rel="icon" type="image/png" href="/images/favicon.png"></link>
+      </Head>
+      <body className={neueHaasUnica.variable}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>

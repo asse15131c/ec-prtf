@@ -64,7 +64,7 @@ export function Project({
             "gsap:status"
           )}
         ></div> */}
-        <div className="w-full flex flex-col gap-0.5 px-1 py-1 lg:py-0 relative z-10">
+        <div className="w-full flex flex-col gap-0.5 lg:px-1 py-1 lg:py-0 relative z-10">
           <h5
             className={
               clsx()
@@ -96,7 +96,7 @@ export function Project({
             &#40;{project.year}&#41;
           </p>
         </div>
-        <div className="relative z-10 flex justify-between px-1 items-start">
+        <div className="relative z-10 flex justify-between lg:px-1 items-start">
           <PrismicLink
             field={project.website}
             className={clsx(
@@ -107,7 +107,7 @@ export function Project({
             {project.website_title}
           </PrismicLink>
           <button className="underline shine h-auto hover:bg-black hover:text-white pt-0.5 pb-[2px]">
-            [{open ? "Close" : "Open"}]
+            [{open ? "Close" : "View"}]
           </button>
         </div>
         <div
