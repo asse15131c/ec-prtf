@@ -38,24 +38,26 @@ export function VideoFile({
 
   return (
     <div
+      // 116.54
       className={clsx(
-        "relative pb-[116.54%] h-0 transform-gpu overflow-hidden",
+        "relative pb-[1%] h-0 transform-gpu overflow-hidden bg-black/10",
+        "gsap:videofile",
         {
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_1px_1px_0px_0px_rgba(0,0,0,0.2),inset_0px_-1px_0px_0px_rgba(0,0,0,0.2)]":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,1),inset_0px_-1px_0px_0px_rgba(255,255,255,1)]":
             index % 2 != 0 && index > 1 && index < length - 1 && length >= 2,
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_-1px_1px_0px_0px_rgba(0,0,0,0.2),inset_0px_-1px_0px_0px_rgba(0,0,0,0.2)]":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_-1px_1px_0px_0px_rgba(255,255,255,1),inset_0px_-1px_0px_0px_rgba(255,255,255,1)]":
             index % 2 == 0 && index < length - 1 && index > 1 && length >= 2,
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_1px_-1px_0px_0px_rgba(0,0,0,0.2)]":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_1px_-1px_0px_0px_rgba(255,255,255,1)]":
             index % 2 != 0 && index <= 1 && length >= 2,
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_-1px_-1px_0px_0px_rgba(0,0,0,0.2)] ":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_-1px_-1px_0px_0px_rgba(255,255,255,1)] ":
             index % 2 == 0 && index <= 1 && length >= 2,
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_1px_1px_0px_0px_rgba(0,0,0,0.2)]":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,1)]":
             index % 2 != 0 && index >= length - 1 && length > 2,
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_-1px_1px_0px_0px_rgba(0,0,0,0.2)]":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_-1px_1px_0px_0px_rgba(255,255,255,1)]":
             index % 2 == 0 && index >= length - 1 && length > 2,
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_1px_0px_0px_0px_rgba(0,0,0,0.2)]":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_1px_0px_0px_0px_rgba(255,255,255,1)]":
             index % 2 != 0 && length <= 2,
-          "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_-1px_0px_0px_0px_rgba(0,0,0,0.2)]":
+          "shadow-[inset_0px_-2px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_-1px_0px_0px_0px_rgba(255,255,255,1)]":
             index % 2 == 0 && length <= 2,
         }
       )}

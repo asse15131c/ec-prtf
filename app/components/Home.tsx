@@ -36,7 +36,7 @@ export function Home({ page }: { page: IndexDocument }) {
   return (
     <>
       <Header />
-      <ul className="lg:col-span-2 relative z-1 lg:gap-8">
+      <ul className="lg:col-span-2 relative z-1 gap-8">
         {page.data.projects.map(({ project }: any, index: number) => (
           <Project project={project.data} key={project.id} index={index + 1} />
         ))}

@@ -4,7 +4,7 @@ import { type ProjectDocumentData } from "@/prismicio-types";
 import { PrismicLink } from "@prismicio/react";
 import clsx from "clsx";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
@@ -15,48 +15,44 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Project({
   project,
-  index,
 }: {
   project: ProjectDocumentData;
   index: number;
 }) {
   const projectRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+  const tl = useRef(gsap.timeline()).current;
+
+  // const open = useRef<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const { isLg } = useBreakpoints();
 
-  useEffect(() => {
+  const onClick = () => {
     gsap.context(() => {
-      const top = headerRef.current?.offsetHeight;
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".gsap\\:list",
-          start: `top top+=${top}`,
-          end: `bottom top+=${top}`,
-          scrub: 0,
-          // markers: true,
-        },
+      tl.to(".gsap\\:videofile", {
+        paddingBottom: open ? "1%" : "116.54%",
+        duration: 1,
+        ease: "power4.inOut",
+        stagger: 0.1,
       });
-
-      tl.fromTo(
-        ".gsap\\:status",
-        {
-          scaleX: 0,
-        },
-        {
-          scaleX: 1,
-        }
-      );
+      // open.current = !open.current;
+      setOpen((e) => !e);
     }, projectRef);
-  }, [isLg]);
+  };
 
   return (
-    <div className="flex flex-col last:pb-0 bg-white" ref={projectRef}>
+    <div
+      className="flex flex-col last:pb-0 bg-white cursor-pointer"
+      ref={projectRef}
+      onClick={onClick}
+    >
       <div
         className={clsx(
           "sticky top-0 z-10 p-sm ",
           "grid grid-cols-2 gap-sm",
-          "lg:gap-0 lg:px-0 bg-white"
+          "lg:gap-0 lg:px-0 bg-white",
+          " hover:bg-grey"
           // "backdrop-blur-md bg-black/5"
           // "mix-blend-difference"
         )}
@@ -86,7 +82,13 @@ export function Project({
             {project.credits && (
               <span>
                 Credits to{" "}
-                <PrismicLink field={project.credits} className="lowercase ">
+                <PrismicLink
+                  field={project.credits}
+                  className={clsx(
+                    "lowercase",
+                    "hover:bg-darkgrey hover:text-white"
+                  )}
+                >
                   {project.credits_title}
                 </PrismicLink>{" "}
               </span>
@@ -94,17 +96,19 @@ export function Project({
             &#40;{project.year}&#41;
           </p>
         </div>
-        <div className="relative z-10">
+        <div className="relative z-10 flex justify-between px-1 items-start">
           <PrismicLink
             field={project.website}
             className={clsx(
-              "underline text-blue w-auto h-auto px-1 cursor-pointer leading-none",
-              // "hover:bg-yellow hover:text-black",
+              "underline text-blue w-auto h-auto cursor-pointer leading-none pt-0.5 pb-[2px]",
               "hover:bg-blue hover:text-white"
             )}
           >
             {project.website_title}
           </PrismicLink>
+          <button className="underline shine h-auto hover:bg-black hover:text-white pt-0.5 pb-[2px]">
+            [{open ? "Close" : "Open"}]
+          </button>
         </div>
         <div
           className={clsx(
@@ -141,13 +145,6 @@ export function Project({
                     />
                   </div>
                 ) : (
-                  // <video
-                  //   src={media.url}
-                  //   muted
-                  //   loop
-                  //   autoPlay
-                  //   className="h-auto"
-                  // />
                   <VideoFile
                     url={media.url}
                     index={index}
