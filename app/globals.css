@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   @apply font-textGyreHero leading-none text-base text-black;
-  @apply leading-[0.9];
+  @apply leading-none;
 }
 
 @keyframes shine {

@@ -55,7 +55,8 @@ export function Header() {
                 "hover:bg-blue hover:text-white",
                 "gsap:scrumble"
               )}
-              href="mailto:catani.elena1@gmail.com"
+              target="_blank"
+              href="https://github.com/asse15131c"
             >
               Github
             </a>
@@ -67,7 +68,8 @@ export function Header() {
 
                 "gsap:scrumble"
               )}
-              href="mailto:catani.elena1@gmail.com"
+              target="_blank"
+              href="https://www.linkedin.com/in/elena-catani/"
             >
               LinkedIn
             </a>

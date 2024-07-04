@@ -39,7 +39,7 @@ export function VideoFile({
   return (
     <div
       className={clsx(
-        "relative aspect-[0.8346] transform-gpu overflow-hidden",
+        "relative pb-[116.54%] h-0 transform-gpu overflow-hidden",
         {
           "shadow-[inset_0px_-2px_0px_0px_rgba(0,0,0,0.2)] lg:shadow-[inset_1px_1px_0px_0px_rgba(0,0,0,0.2),inset_0px_-1px_0px_0px_rgba(0,0,0,0.2)]":
             index % 2 != 0 && index > 1 && index < length - 1 && length >= 2,
@@ -71,7 +71,7 @@ export function VideoFile({
         playsInline
         webkit-playsinline="true"
         className={clsx(
-          "w-full h-full object-cover transition-all duration-700 scale-100 opacity-0",
+          "w-full h-full object-cover transition-all duration-700 scale-100 opacity-0 absolute inset-0",
           " data-[lazy=loaded]:scale-100 data-[lazy=loaded]:opacity-100",
           "opacity-30 data-[lazy=loaded]:opacity-100"
         )}

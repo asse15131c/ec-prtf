@@ -54,17 +54,35 @@ export function Project({
     <div className="flex flex-col last:pb-0 bg-white" ref={projectRef}>
       <div
         className={clsx(
-          "sticky top-0 mix-blend-difference z-10 p-sm",
+          "sticky top-0 z-10 p-sm ",
           "grid grid-cols-2 gap-sm",
-          "lg:gap-0 lg:px-0"
+          "lg:gap-0 lg:px-0 bg-white"
+          // "backdrop-blur-md bg-black/5"
+          // "mix-blend-difference"
         )}
         ref={headerRef}
       >
-        <div className="w-full flex flex-col gap-0.5 px-1">
-          <h5 className="text-white">
+        {/* <div
+          className={clsx(
+            "h-full bg-white absolute top-0 bottom-0 left-0 right-0 scale-x-0 origin-left z-0 backdrop-blur-md",
+            "gsap:status"
+          )}
+        ></div> */}
+        <div className="w-full flex flex-col gap-0.5 px-1 py-1 lg:py-0 relative z-10">
+          <h5
+            className={
+              clsx()
+              // "text-white"
+            }
+          >
             {project.title}, {project.type}.
           </h5>
-          <p className="text-[#4b4b4b]">
+          <p
+            className={clsx(
+              // "text-[#4b4b4b]",
+              "text-darkgrey"
+            )}
+          >
             {project.credits && (
               <span>
                 Credits to{" "}
@@ -76,12 +94,13 @@ export function Project({
             &#40;{project.year}&#41;
           </p>
         </div>
-        <div className="">
+        <div className="relative z-10">
           <PrismicLink
             field={project.website}
             className={clsx(
-              "underline text-yellow w-auto h-auto px-1 cursor-pointer leading-none",
-              "hover:bg-yellow hover:text-black"
+              "underline text-blue w-auto h-auto px-1 cursor-pointer leading-none",
+              // "hover:bg-yellow hover:text-black",
+              "hover:bg-blue hover:text-white"
             )}
           >
             {project.website_title}
@@ -89,7 +108,7 @@ export function Project({
         </div>
         <div
           className={clsx(
-            "h-[2px] bg-grey absolute top-full left-0 right-0 scale-x-0 origin-left z-10 ",
+            "h-[4px] bg-white absolute top-full left-0 right-0 scale-x-0 origin-left z-10 backdrop-blur-md",
             "gsap:status"
           )}
         ></div>
