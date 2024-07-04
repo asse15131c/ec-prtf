@@ -1,4 +1,4 @@
-export function Favicon() {
+export function Head() {
   return (
     <head>
       <link
@@ -26,6 +26,7 @@ export function Favicon() {
       />
       <meta name="msapplication-TileColor" content="#ffffff" />
       <meta name="theme-color" content="#ffffff"></meta>
+      <meta property="og:image" content="http://elena-catni:com/api/og" />
     </head>
   );
 }

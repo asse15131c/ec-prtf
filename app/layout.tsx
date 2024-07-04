@@ -4,7 +4,7 @@ import { repositoryName } from "@/prismicio";
 import localFont from "next/font/local";
 
 import "./globals.css";
-import { Favicon } from "./components/Favicon";
+import { Head } from "./components/Head";
 
 const neueHaasUnica = localFont({
   src: [
@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Favicon />
+      <Head />
 
       <body className={neueHaasUnica.variable}>
         {children}
