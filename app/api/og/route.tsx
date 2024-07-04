@@ -19,7 +19,6 @@ export async function GET() {
             height: "100%",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "#fff",
             fontFamily: '"Neue Haas Unica"',
           }}
         >
