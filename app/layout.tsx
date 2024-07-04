@@ -4,7 +4,7 @@ import { repositoryName } from "@/prismicio";
 import localFont from "next/font/local";
 
 import "./globals.css";
-import Head from "next/head";
+import { Favicon } from "./components/Favicon";
 
 const neueHaasUnica = localFont({
   src: [
@@ -30,11 +30,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
-        <meta property="og:image" content="http://elenacatani.com/api/og" />
-        <link rel="icon" type="image/svg+xml" href="/images/favicon.svg" />
-        <link rel="icon" type="image/png" href="/images/favicon.png"></link>
-      </Head>
+      <Favicon />
+
       <body className={neueHaasUnica.variable}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />
