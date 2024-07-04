@@ -58,7 +58,17 @@ export default function RootLayout({
         />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff"></meta>
+        <meta name="og:title" content="Elena Catani" />
+        <meta name="og:description" content="Frontend developer" />
         <meta property="og:image" content="http://elenacatani.com/api/og" />
+        <meta name="og:url" content="https://elenacatani.com" />
+        <meta name="twitter:title" content="Frontend developer" />
+        <meta name="twitter:description" content="Frontend developer" />
+        <meta
+          name="twitter:image"
+          content="https://og-examples.vercel.sh/api/static"
+        />
+        <meta name="twitter:card" content="http://elenacatani.com/api/og" />
       </head>
 
       <body className={neueHaasUnica.variable}>
