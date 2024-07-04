@@ -64,11 +64,8 @@ export default function RootLayout({
         <meta name="og:url" content="https://elenacatani.com" />
         <meta name="twitter:title" content="Frontend developer" />
         <meta name="twitter:description" content="Frontend developer" />
-        <meta
-          name="twitter:image"
-          content="https://og-examples.vercel.sh/api/static"
-        />
-        <meta name="twitter:card" content="http://elenacatani.com/api/og" />
+        <meta name="twitter:image" content="http://elenacatani.com/api/og" />
+        <meta name="twitter:card" content="summary_large_image" />
       </head>
 
       <body className={neueHaasUnica.variable}>
