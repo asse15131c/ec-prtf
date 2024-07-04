@@ -21,6 +21,8 @@ const neueHaasUnica = localFont({
 export const metadata: Metadata = {
   title: "Elena Catani",
   description: "Frontend developer based in Milan",
+  referrer: "origin-when-cross-origin",
+  keywords: ["Elena Catani", "Frontend developer"],
 };
 
 export default function RootLayout({
@@ -30,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -57,8 +59,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff"></meta>
         <meta property="og:image" content="http://elenacatani.com/api/og" />
-        {/* <meta property="og:image" content="http://localhost:3000/api/og" /> */}
-      </Head>
+      </head>
 
       <body className={neueHaasUnica.variable}>
         {children}
