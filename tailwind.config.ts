@@ -3,6 +3,9 @@ import type { Config } from "tailwindcss";
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 const config: Config = {
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,10 +19,10 @@ const config: Config = {
         // md: "1.125rem", // 18px
         // lg: "1.5rem", // 24px
 
-        sm: "4px", // 8px
-        base: "6px", // 12px
-        md: "9px", // 18px
-        lg: "12px", // 24px
+        sm: "4px", // 4px
+        base: "6px", // 6px
+        md: "9px", // 9px
+        lg: "12px", // 12px
       },
       fontFamily: {
         textGyreHero: [

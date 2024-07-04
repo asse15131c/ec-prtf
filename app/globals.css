@@ -25,7 +25,10 @@ a {
   @apply cursor-pointer;
 }
 
-a:hover {
-  -webkit-animation: shine 0.3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  animation: shine 0.3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+@media (hover: hover) and (pointer: fine) {
+  a:hover,
+  .shine:hover {
+    -webkit-animation: shine 0.3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    animation: shine 0.3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
 }

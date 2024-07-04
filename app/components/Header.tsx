@@ -29,8 +29,8 @@ export function Header() {
   return (
     <header
       className={clsx(
-        "grid grid-cols-2 p-sm sticky top-0 z-0 pb-12 bg-white",
-        "lg:h-screen lg:pb-base lg:z-10"
+        "grid grid-cols-2 p-sm z-0 pb-12 bg-white",
+        "lg:h-screen lg:pb-base lg:z-10 lg:sticky lg:top-0"
       )}
     >
       <div
@@ -101,7 +101,7 @@ export function Header() {
             <a
               className={clsx(
                 "inline-block  text-blue underline pt-0.5 pb-[2px]",
-                "hover:bg-blue hover:text-yellow",
+                "hover:bg-blue hover:text-white",
                 "gsap:scrumble"
               )}
               href="mailto:catani.elena1@gmail.com"
