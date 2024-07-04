@@ -11,11 +11,6 @@ const config: Config = {
   theme: {
     extend: {
       spacing: {
-        // sm: "0.5rem", // 8px
-        // base: "0.75rem", // 12px
-        // md: "1.125rem", // 18px
-        // lg: "1.5rem", // 24px
-
         sm: "4px", // 8px
         base: "6px", // 12px
         md: "9px", // 18px
