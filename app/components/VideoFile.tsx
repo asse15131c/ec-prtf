@@ -28,29 +28,19 @@ export function VideoFile({
     threshold: 0,
   });
 
-  const onPlay = () => {
-    if (videoRef.current) {
-      videoRef.current.removeEventListener("canplaythrough", onPlay);
-      videoRef.current.setAttribute("data-lazy", "loaded");
-    }
-
-    if (lineVideoRef.current) {
-      lineVideoRef.current.removeEventListener("canplaythrough", onPlay);
-      lineVideoRef.current.setAttribute("data-lazy", "loaded");
-    }
-
-    // loaded.current = true;
+  const onPlay = (event: Event) => {
+    const video = event.target as HTMLVideoElement;
+    video.removeEventListener?.("canplaythrough", onPlay);
+    video.setAttribute("data-lazy", "loaded");
   };
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.addEventListener("canplaythrough", onPlay);
-      return;
     }
 
     if (lineVideoRef.current) {
       lineVideoRef.current.addEventListener("canplaythrough", onPlay);
-      return;
     }
   }, [lineVideoRef, videoRef]);
 
@@ -102,14 +92,19 @@ export function VideoFile({
 
   useEffect(() => {
     // console.log(projectIndex, "open", open, videoRef.current);
-    if (!videoRef.current) return;
+    if (!videoRef.current || !lineVideoRef.current) return;
 
-    if (isIntersecting && open) {
-      videoRef.current.play();
-      // console.log(projectIndex, "play", open);
+    if (isIntersecting) {
+      if (open) {
+        videoRef.current.play();
+        lineVideoRef.current.pause();
+      } else {
+        lineVideoRef.current.play();
+        videoRef.current.pause();
+      }
     } else if (!isIntersecting) {
       videoRef.current.pause();
-      // console.log(projectIndex, "pause", open);
+      lineVideoRef.current.pause();
     }
   }, [isIntersecting, open, projectIndex, videoRef]);
 
@@ -144,39 +139,42 @@ export function VideoFile({
       )}
       ref={ref}
     >
-      {open ? (
-        <video
-          ref={videoRef}
-          // src={url}
-          data-src={url}
-          muted
-          loop
-          autoPlay
-          playsInline
-          webkit-playsinline="true"
-          className={clsx(
-            "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
-            "data-[lazy=loaded]:opacity-100"
-          )}
-          preload="none"
-        />
-      ) : (
-        <video
-          ref={lineVideoRef}
-          // src={lineUrl}
-          data-src={lineUrl}
-          muted
-          loop
-          autoPlay
-          playsInline
-          webkit-playsinline="true"
-          className={clsx(
-            "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
-            "data-[lazy=loaded]:opacity-100"
-          )}
-          preload="none"
-        />
-      )}
+      <video
+        ref={videoRef}
+        // src={url}
+        data-src={url}
+        muted
+        loop
+        autoPlay={!open}
+        playsInline
+        webkit-playsinline="true"
+        className={clsx(
+          "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
+          "data-[lazy=loaded]:opacity-100",
+          {
+            hidden: !open,
+          }
+        )}
+        preload="none"
+      />
+      <video
+        ref={lineVideoRef}
+        // src={lineUrl}
+        data-src={lineUrl}
+        muted
+        loop
+        autoPlay={open}
+        playsInline
+        webkit-playsinline="true"
+        className={clsx(
+          "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
+          "data-[lazy=loaded]:opacity-100",
+          {
+            hidden: open,
+          }
+        )}
+        preload="none"
+      />
     </div>
   );
 }
