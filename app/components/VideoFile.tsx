@@ -63,7 +63,7 @@ export function VideoFile({
     // }
 
     if (projectIndex === 1) {
-      if (videoRef.current) {
+      if (videoRef.current && !videoRef.current.src) {
         videoRef.current.src = videoRef.current.dataset.src!;
         videoRef.current.setAttribute("preload", "auto");
         return;
@@ -71,7 +71,10 @@ export function VideoFile({
     }
 
     if (open) {
-      if (videoRef.current) {
+      if (
+        videoRef.current &&
+        videoRef.current.src !== videoRef.current.dataset.src!
+      ) {
         videoRef.current.src = videoRef.current.dataset.src!;
         videoRef.current.setAttribute("preload", "auto");
         return;
@@ -79,7 +82,10 @@ export function VideoFile({
     }
 
     if (isIntersecting && hasLoadingEnded) {
-      if (lineVideoRef.current) {
+      if (
+        lineVideoRef.current &&
+        lineVideoRef.current.src !== lineVideoRef.current.dataset.src!
+      ) {
         lineVideoRef.current.src = lineVideoRef.current.dataset.src!;
         lineVideoRef.current.setAttribute("preload", "auto");
         return;
