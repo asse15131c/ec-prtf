@@ -80,9 +80,7 @@ export function Header() {
         <div className="flex flex-col gap-0.5 items-start">
           <h1 className={clsx("gsap:scrumble")}>Get in touch</h1>
           <div className="flex flex-col">
-            <a href="mailto:catani.elena1@gmail.com">
-              catani.elena1[at]gmail.com
-            </a>
+            <a href="mailto:catani.elena1@gmail.com">catani.elena1@gmail.com</a>
           </div>
         </div>
       </div>

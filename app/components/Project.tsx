@@ -115,7 +115,7 @@ export const Project = forwardRef<
               // "group-focus/project:bg-blue group-focus/project:text-white group-focus/project:animate-blink"
             )}
           >
-            [{open ? "Close project" : "View project"}]
+            [{open ? "Close" : "View"}]
           </button>
         </div>
         <div
