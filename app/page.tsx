@@ -23,7 +23,7 @@ export default async function Home() {
   });
 
   return (
-    <main className={clsx("flex flex-col bg-white", "lg:grid lg:grid-cols-3")}>
+    <main className={clsx("grid bg-white", "md:grid-cols-2", "lg:grid-cols-3")}>
       <Homepage page={page} />
     </main>
   );

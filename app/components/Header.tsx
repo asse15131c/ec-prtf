@@ -30,7 +30,7 @@ export function Header() {
     <header
       className={clsx(
         "grid grid-cols-2 p-sm z-0 pb-12 bg-white",
-        "lg:h-screen lg:pb-base lg:z-10 lg:sticky lg:top-0"
+        "md:h-screen md:pb-base md:z-10 md:sticky md:top-0"
       )}
     >
       <div
@@ -79,7 +79,7 @@ export function Header() {
       <div
         className={clsx(
           "flex flex-col gap-lg",
-          "lg:h-full lg:flex lg:flex-col lg:justify-between lg:gap-0"
+          "md:h-full md:flex md:flex-col md:justify-between md:gap-0"
         )}
       >
         <div className={clsx("flex flex-col gap-md ", "lg:gap-0")}>
