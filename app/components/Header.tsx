@@ -107,7 +107,6 @@ export function Header() {
               href="mailto:catani.elena1@gmail.com"
             >
               catani.elena1[at]gmail.com
-              {/* Mail */}
             </a>
           </div>
         </div>

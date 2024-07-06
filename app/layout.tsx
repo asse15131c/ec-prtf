@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+
 import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 import localFont from "next/font/local";
-import Head from "next/head";
 
 import "./globals.css";
+
 import { Favicon } from "./components/Favicon";
 
 const neueHaasUnica = localFont({
   src: [
     {
-      path: "../public/fonts/NeueHaasUnica-Medium.woff",
+      path: "../public/fonts/NeueHaasUnica-Medium.woff2",
 
       weight: "700",
       style: "normal",

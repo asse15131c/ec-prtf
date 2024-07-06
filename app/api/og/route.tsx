@@ -5,7 +5,7 @@ export const runtime = "edge";
 export async function GET() {
   try {
     const fontData = await fetch(
-      new URL("/public/fonts/NeueHaasUnica-Medium.woff", import.meta.url)
+      new URL("/public/fonts/NeueHaasUnica-Medium.woff2", import.meta.url)
     ).then((res) => res.arrayBuffer());
 
     return new ImageResponse(

@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useIntersectionObserver } from "usehooks-ts";
 
 export function VideoFile({
@@ -38,7 +38,6 @@ export function VideoFile({
 
   return (
     <div
-      // 116.54
       className={clsx(
         "relative pb-[1%] h-0 transform-gpu overflow-hidden bg-black/10",
         "gsap:videofile",
@@ -63,7 +62,6 @@ export function VideoFile({
       )}
       ref={ref}
     >
-      {/* <div className="absolute -top-[1px] left-0 w-[200%] h-[1px] transform-gpu rotate-[50.2deg] bg-black/20 origin-top-left "></div> */}
       <video
         ref={videoRef}
         data-src={url}

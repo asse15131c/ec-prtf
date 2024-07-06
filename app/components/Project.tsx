@@ -8,7 +8,6 @@ import { useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 
-import { useBreakpoints } from "../utils/useBreakpoints";
 import { VideoFile } from "./VideoFile";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,10 +22,7 @@ export function Project({
   const headerRef = useRef<HTMLDivElement>(null);
   const tl = useRef(gsap.timeline()).current;
 
-  // const open = useRef<boolean>(false);
   const [open, setOpen] = useState<boolean>(false);
-
-  const { isLg } = useBreakpoints();
 
   const onClick = () => {
     gsap.context(() => {
@@ -36,7 +32,6 @@ export function Project({
         ease: "power4.inOut",
         stagger: 0.1,
       });
-      // open.current = !open.current;
       setOpen((e) => !e);
     }, projectRef);
   };
@@ -53,35 +48,18 @@ export function Project({
           "grid grid-cols-2 gap-sm",
           "lg:gap-0 lg:px-0 bg-white",
           " hover:bg-grey"
-          // "backdrop-blur-md bg-black/5"
-          // "mix-blend-difference"
         )}
         ref={headerRef}
       >
-        {/* <div
-          className={clsx(
-            "h-full bg-white absolute top-0 bottom-0 left-0 right-0 scale-x-0 origin-left z-0 backdrop-blur-md",
-            "gsap:status"
-          )}
-        ></div> */}
         <div className="w-full flex flex-col gap-0.5 lg:px-1 py-1 lg:py-0 relative z-10">
-          <h5
-            className={
-              clsx()
-              // "text-white"
-            }
-          >
+          <h5>
             {project.title}, {project.type}.
           </h5>
-          <p
-            className={clsx(
-              // "text-[#4b4b4b]",
-              "text-darkgrey"
-            )}
-          >
+          <p className={clsx("text-darkgrey")}>
             {project.credits && (
               <span>
-                Credits to{" "}
+                Credits to {project.credits_title}{" "}
+                {/* Credits to{" "}
                 <PrismicLink
                   field={project.credits}
                   className={clsx(
@@ -90,7 +68,7 @@ export function Project({
                   )}
                 >
                   {project.credits_title}
-                </PrismicLink>{" "}
+                </PrismicLink>{" "} */}
               </span>
             )}
             &#40;{project.year}&#41;
