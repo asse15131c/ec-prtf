@@ -3,5 +3,6 @@
 import dynamic from "next/dynamic";
 
 export const components = {
-  multimedia_row: dynamic(() => import("./MediaRow")),
+  media_row: dynamic(() => import("./MediaRow")),
+  video: dynamic(() => import("./Video")),
 };

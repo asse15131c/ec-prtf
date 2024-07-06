@@ -1,7 +1,7 @@
 "use client";
 import { type ProjectDocumentData } from "@/prismicio-types";
 
-import { PrismicLink } from "@prismicio/react";
+import { PrismicLink, PrismicLinkProps } from "@prismicio/react";
 import clsx from "clsx";
 import Image from "next/image";
 import { forwardRef, useEffect, useRef, useState } from "react";
@@ -20,14 +20,11 @@ export const Project = forwardRef<
     hasLoadingEnded: boolean;
   }
 >(function Project({ project, index, hasLoadingEnded }, forwardedRef) {
-  // const ref = useRef(null!);
   const headerRef = useRef(null!);
   const tl = useRef(gsap.timeline()).current;
-
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(index === 1);
 
   const onClick = () => {
-    console.log("forwardedRef", forwardedRef);
     gsap.context(() => {
       tl.clear();
       tl.to(".gsap\\:videofile", {
@@ -35,10 +32,25 @@ export const Project = forwardRef<
         duration: open ? 1 : 1.2,
         ease: "custom.standard",
         stagger: 0.1,
+        onComplete: () => {
+          if (open) {
+            setOpen((e) => !e);
+          }
+        },
+        onStart: () => {
+          if (!open) {
+            setOpen((e) => !e);
+          }
+        },
       });
-      setOpen((e) => !e);
     }, forwardedRef!);
   };
+
+  useEffect(() => {
+    if (hasLoadingEnded) {
+      setOpen(false);
+    }
+  }, [hasLoadingEnded]);
 
   return (
     <li
@@ -113,7 +125,7 @@ export const Project = forwardRef<
           )}
         ></div>
       </div>
-      <ul
+      {/* <ul
         className={clsx(
           "flex flex-col",
           "lg:grid lg:grid-cols-2 bg-white",
@@ -150,8 +162,48 @@ export const Project = forwardRef<
                     index={videoIndex}
                     projectIndex={index}
                     length={project.gallery.length - 1}
+                    open={open}
                   />
                 )}
+              </li>
+            )
+          )}
+      </ul> */}
+      <ul
+        className={clsx(
+          "flex flex-col",
+          "lg:grid lg:grid-cols-2 bg-white",
+          "gsap:list"
+        )}
+      >
+        {project.slices &&
+          project.slices.map(
+            (
+              {
+                primary,
+                slice_type,
+              }: {
+                primary: {
+                  line: any;
+                  main: any;
+                };
+                slice_type: string;
+              },
+              videoIndex
+            ) => (
+              <li
+                key={index + "_" + videoIndex}
+                className="w-full flex flex-col"
+              >
+                <VideoFile
+                  hasLoadingEnded={hasLoadingEnded}
+                  url={primary.main.url}
+                  lineUrl={primary.line.url}
+                  index={videoIndex}
+                  projectIndex={index}
+                  length={project.gallery.length - 1}
+                  open={open}
+                />
               </li>
             )
           )}

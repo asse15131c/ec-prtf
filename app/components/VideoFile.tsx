@@ -9,14 +9,19 @@ export function VideoFile({
   index,
   projectIndex,
   length,
+  open,
+  lineUrl,
 }: {
   hasLoadingEnded: boolean;
   url: string;
   index: number;
   projectIndex: number;
   length: number;
+  open: boolean;
+  lineUrl: string;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const lineVideoRef = useRef<HTMLVideoElement>(null);
   const loaded = useRef<Boolean>(false);
 
   const { isIntersecting, ref } = useIntersectionObserver({
@@ -24,37 +29,83 @@ export function VideoFile({
   });
 
   const onPlay = () => {
-    if (!videoRef.current) return;
+    if (videoRef.current) {
+      videoRef.current.removeEventListener("canplaythrough", onPlay);
+      videoRef.current.setAttribute("data-lazy", "loaded");
+    }
 
-    videoRef.current.removeEventListener("canplaythrough", onPlay);
-    videoRef.current.setAttribute("data-lazy", "loaded");
-    loaded.current = true;
+    if (lineVideoRef.current) {
+      lineVideoRef.current.removeEventListener("canplaythrough", onPlay);
+      lineVideoRef.current.setAttribute("data-lazy", "loaded");
+    }
+
+    // loaded.current = true;
   };
 
   useEffect(() => {
-    if (!videoRef.current) return;
-    videoRef.current.addEventListener("canplaythrough", onPlay);
-  }, [videoRef]);
+    if (videoRef.current) {
+      videoRef.current.addEventListener("canplaythrough", onPlay);
+      return;
+    }
+
+    if (lineVideoRef.current) {
+      lineVideoRef.current.addEventListener("canplaythrough", onPlay);
+      return;
+    }
+  }, [lineVideoRef, videoRef]);
 
   useEffect(() => {
     // console.log("hasLoadingEnded", projectIndex, hasLoadingEnded);
+    // console.log("videoRef", videoRef.current?.getAttribute("data-src"));
 
-    if (!videoRef.current || loaded.current) {
-      return;
-    }
+    // if ((open && !videoRef.current) || (!open && !lineVideoRef.current)) {
+    //   return;
+    // }
 
     if (projectIndex === 1) {
-      videoRef.current.src = videoRef.current.dataset.src!;
-      videoRef.current.setAttribute("preload", "auto");
-      return;
+      if (videoRef.current) {
+        videoRef.current.src = videoRef.current.dataset.src!;
+        videoRef.current.setAttribute("preload", "auto");
+        return;
+      }
+    }
+
+    if (open) {
+      if (videoRef.current) {
+        videoRef.current.src = videoRef.current.dataset.src!;
+        videoRef.current.setAttribute("preload", "auto");
+        return;
+      }
     }
 
     if (isIntersecting && hasLoadingEnded) {
-      videoRef.current.src = videoRef.current.dataset.src!;
-      videoRef.current.setAttribute("preload", "auto");
-      return;
+      if (lineVideoRef.current) {
+        lineVideoRef.current.src = lineVideoRef.current.dataset.src!;
+        lineVideoRef.current.setAttribute("preload", "auto");
+        return;
+      }
     }
-  }, [hasLoadingEnded, isIntersecting, projectIndex, videoRef]);
+  }, [
+    hasLoadingEnded,
+    isIntersecting,
+    lineVideoRef,
+    projectIndex,
+    videoRef,
+    open,
+  ]);
+
+  useEffect(() => {
+    // console.log(projectIndex, "open", open, videoRef.current);
+    if (!videoRef.current) return;
+
+    if (isIntersecting && open) {
+      videoRef.current.play();
+      // console.log(projectIndex, "play", open);
+    } else if (!isIntersecting) {
+      videoRef.current.pause();
+      // console.log(projectIndex, "pause", open);
+    }
+  }, [isIntersecting, open, projectIndex, videoRef]);
 
   return (
     <div
@@ -79,27 +130,47 @@ export function VideoFile({
           "shadow-[inset_0px_-1px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_-1px_0px_0px_0px_rgba(255,255,255,1)]":
             index % 2 == 0 && length <= 2,
         },
+        // "pb-[116.54%]"
         {
-          "pb-[1%]": projectIndex > 1,
+          "pb-[6px]": projectIndex > 1,
           "pb-[116.54%]": projectIndex === 1,
         }
       )}
       ref={ref}
     >
-      <video
-        ref={videoRef}
-        data-src={url}
-        muted
-        loop
-        autoPlay
-        playsInline
-        webkit-playsinline="true"
-        className={clsx(
-          "w-full h-full object-cover transition-all duration-700 pacity-0 absolute inset-0",
-          "opacity-30 data-[lazy=loaded]:opacity-100"
-        )}
-        preload="none"
-      />
+      {open ? (
+        <video
+          ref={videoRef}
+          // src={url}
+          data-src={url}
+          muted
+          loop
+          autoPlay
+          playsInline
+          webkit-playsinline="true"
+          className={clsx(
+            "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
+            "data-[lazy=loaded]:opacity-100"
+          )}
+          preload="none"
+        />
+      ) : (
+        <video
+          ref={lineVideoRef}
+          // src={lineUrl}
+          data-src={lineUrl}
+          muted
+          loop
+          autoPlay
+          playsInline
+          webkit-playsinline="true"
+          className={clsx(
+            "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
+            "data-[lazy=loaded]:opacity-100"
+          )}
+          preload="none"
+        />
+      )}
     </div>
   );
 }

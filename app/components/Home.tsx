@@ -44,6 +44,8 @@ export function Home({ page }: { page: IndexDocument }) {
       tl.add(() => {
         setHasLoadingEnded(true);
       });
+
+      // setHasLoadingEnded(true);
     },
     {
       scope: projectRefs[0],
