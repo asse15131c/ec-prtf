@@ -25,7 +25,7 @@ export function VideoFile({
   const loaded = useRef<Boolean>(false);
 
   const { isIntersecting, ref } = useIntersectionObserver({
-    threshold: 0.2,
+    threshold: 0,
   });
 
   const onPlay = () => {
