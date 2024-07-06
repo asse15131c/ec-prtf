@@ -42,35 +42,17 @@ export function Header() {
         <div className="flex flex-col gap-0.5">
           <h1 className="gsap:scrumble">Elena Catani</h1>
           <p className="gsap:scrumble text-darkgrey">
-            Frontend developer <br />
-            based in Milan
+            Web Development & <br /> Graphic Design
           </p>
         </div>
         <div className="flex flex-col gap-0.5">
           <h1 className={clsx("gsap:scrumble")}>Social</h1>
           <div className="flex items-end">
-            <a
-              className={clsx(
-                "inline-block  text-blue underline pt-0.5 pb-[2px]",
-                "hover:bg-blue hover:text-white",
-                "gsap:scrumble"
-              )}
-              target="_blank"
-              href="https://github.com/asse15131c"
-            >
+            <a target="_blank" href="https://github.com/asse15131c">
               Github
             </a>
             <span className="mr-1">,</span>
-            <a
-              className={clsx(
-                "inline-block  text-blue hover:bg-blue hover:text-white underline pt-0.5 pb-[2px]",
-                "hover:bg-blue hover:text-white",
-
-                "gsap:scrumble"
-              )}
-              target="_blank"
-              href="https://www.linkedin.com/in/elena-catani/"
-            >
+            <a target="_blank" href="https://www.linkedin.com/in/elena-catani/">
               LinkedIn
             </a>
           </div>
@@ -95,17 +77,10 @@ export function Header() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-0.5 items-start">
           <h1 className={clsx("gsap:scrumble")}>Get in touch</h1>
           <div className="flex flex-col">
-            <a
-              className={clsx(
-                "inline-block  text-blue underline pt-0.5 pb-[2px] w-auto mr-auto",
-                "hover:bg-blue hover:text-white",
-                "gsap:scrumble"
-              )}
-              href="mailto:catani.elena1@gmail.com"
-            >
+            <a href="mailto:catani.elena1@gmail.com">
               catani.elena1[at]gmail.com
             </a>
           </div>

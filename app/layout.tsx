@@ -6,12 +6,12 @@ import localFont from "next/font/local";
 
 import "./globals.css";
 
-import { Favicon } from "./components/Favicon";
+// import { Favicon } from "./components/Favicon";
 
 const neueHaasUnica = localFont({
   src: [
     {
-      path: "../public/fonts/NeueHaasUnica-Medium.woff2",
+      path: "./NeueHaasUnica-Medium.woff2",
 
       weight: "700",
       style: "normal",
@@ -22,14 +22,37 @@ const neueHaasUnica = localFont({
 
 export const metadata: Metadata = {
   title: "Elena Catani",
-  description: "Frontend developer based in Milan",
-  referrer: "origin-when-cross-origin",
-  keywords: ["Elena Catani", "Frontend developer"],
+  description: "Web Development & Graphic Design ",
+  keywords: [
+    "Elena Catani",
+    "Frontend developer",
+    "Web Developer",
+    "Web Development",
+    "Graphic Design",
+  ],
+  openGraph: {
+    title: "Elena Catani",
+    description: "Web Development & Graphic Design",
+    url: "https://wwww.elenacatani.com",
+  },
   twitter: {
     title: "Elena Catani",
-    description: "Frontend developer",
-    images: "http://elenacatani.com/api/og",
+    description: "Web Development & Graphic Design",
     card: "summary_large_image",
+  },
+  icons: {
+    icon: [
+      {
+        url: "favicon-blue.svg",
+        href: "favicon-blue.svg",
+        media: "(prefers-color-scheme: light)",
+      },
+      {
+        url: "favicon-white.svg",
+        href: "favicon-white.svg",
+        media: "(prefers-color-scheme: dark)",
+      },
+    ],
   },
 };
 
@@ -40,14 +63,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <Favicon />
-        <meta name="og:title" content="Elena Catani" />
-        <meta name="og:description" content="Frontend developer" />
-        <meta property="og:image" content="http://elenacatani.com/api/og" />
-        <meta name="og:url" content="https://elenacatani.com" />
-      </head>
-
       <body className={neueHaasUnica.variable}>
         {children}
         <PrismicPreview repositoryName={repositoryName} />

@@ -3,31 +3,49 @@
 @tailwind utilities;
 
 /* Base */
-body {
-  -moz-osx-font-smoothing: grayscale;
+
+::-webkit-scrollbar {
+  position: relative;
+
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: theme("colors.blue");
+
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: black;
+}
+
+*,
+:after,
+:before {
+  box-sizing: border-box;
+  border: 0 solid;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  height: 100%;
+  scrollbar-gutter: stable;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  overscroll-behavior: none;
+  overflow-y: scroll;
   @apply font-neueHaasUnica text-base text-black leading-none;
 }
 
-@keyframes shine {
-  0%,
-  to {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
-  }
-}
-
 a {
-  @apply cursor-pointer;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  a:hover,
-  .shine:hover {
-    -webkit-animation: shine 0.3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-    animation: shine 0.3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
+  @apply inline-flex text-blue underline pt-0.5 pb-[2px] hover:bg-blue hover:text-white hover:animate-blink;
 }

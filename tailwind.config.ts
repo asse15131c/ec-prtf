@@ -13,6 +13,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      animation: {
+        blink: "blink 0.3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
       spacing: {
         sm: "0.25rem", // 4px
         base: "0.375rem", // 6px
@@ -24,6 +27,12 @@ const config: Config = {
           "var(--font-neueHaasUnica)",
           ...defaultTheme.fontFamily.sans,
         ],
+      },
+      keyframes: {
+        blink: {
+          "0%, to": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
       },
     },
     fontSize: {
@@ -37,6 +46,7 @@ const config: Config = {
       red: "#ff0000",
       blue: "#0000ff",
       yellow: "#ffff00",
+      transparent: "transparent",
     },
   },
   plugins: [],
