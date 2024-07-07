@@ -117,14 +117,15 @@ export const Project = forwardRef<
           </PrismicLink>
           <button
             className={clsx(
-              "text-blue underline h-auto pt-0.5 pb-[2px]",
+              "text-black bg-grey py-sm px-md rounded-full h-auto ",
               "group-[.is-loading]/project:bg-blue group-[.is-loading]/project:text-white group-[.is-loading]/project:animate-blink",
               "group-hover/project:bg-blue group-hover/project:text-white group-hover/project:animate-blink",
               "peer-hover/website:animate-none peer-hover/website:bg-transparent peer-hover/website:text-blue"
               // "group-focus/project:bg-blue group-focus/project:text-white group-focus/project:animate-blink"
             )}
           >
-            [{open ? "Close" : "View"}]
+            {open ? "Close" : "View"}
+            {/* [{open ? "Close" : "View"}] */}
           </button>
         </div>
         <div
