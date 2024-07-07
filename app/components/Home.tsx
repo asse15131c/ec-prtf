@@ -56,15 +56,16 @@ export function Home({ page }: { page: IndexDocument }) {
   return (
     <>
       <Header />
-      <ul ref={ref} className="lg:col-span-2 relative z-1 flex flex-col gap-0">
+      <ul ref={ref} className="lg:col-span-2 relative z-1 gap-8">
         {projects.map(({ project }: any, index: number) => (
-          <Project
-            ref={projectRefs[index]}
-            project={project.data}
-            key={project.id}
-            index={index + 1}
-            hasLoadingEnded={hasLoadingEnded}
-          />
+          <li key={project.id}>
+            <Project
+              ref={projectRefs[index]}
+              project={project.data}
+              index={index + 1}
+              hasLoadingEnded={hasLoadingEnded}
+            />
+          </li>
         ))}
       </ul>
     </>

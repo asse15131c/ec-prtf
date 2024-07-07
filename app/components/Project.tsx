@@ -53,7 +53,7 @@ export const Project = forwardRef<
   }, [hasLoadingEnded]);
 
   return (
-    <li
+    <div
       className={clsx("flex flex-col cursor-pointer")}
       ref={forwardedRef}
       onClick={onClick}
@@ -213,6 +213,6 @@ export const Project = forwardRef<
             )
           )}
       </ul>
-    </li>
+    </div>
   );
 });

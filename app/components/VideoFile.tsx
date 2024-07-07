@@ -149,7 +149,7 @@ export function VideoFile({
         playsInline
         webkit-playsinline="true"
         className={clsx(
-          "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
+          "w-full min-h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
           "data-[lazy=loaded]:opacity-100",
           {
             hidden: !open,
@@ -167,7 +167,7 @@ export function VideoFile({
         playsInline
         webkit-playsinline="true"
         className={clsx(
-          "w-full h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
+          "w-full min-h-full object-cover transition-all duration-700 opacity-0 absolute inset-0",
           "data-[lazy=loaded]:opacity-100",
           {
             hidden: open,
