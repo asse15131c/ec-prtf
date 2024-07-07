@@ -54,7 +54,7 @@ export const Project = forwardRef<
 
   return (
     <li
-      className="flex flex-col last:pb-0 cursor-pointer"
+      className={clsx("flex flex-col cursor-pointer")}
       ref={forwardedRef}
       onClick={onClick}
     >
@@ -95,14 +95,23 @@ export const Project = forwardRef<
             )}
             &#40;{project.year}&#41;
           </p>
-        </div>
-        <div className="relative z-10 flex justify-between lg:px-1 items-start">
           <PrismicLink
             field={project.website}
             onClick={(event: React.MouseEvent) => {
               event.stopPropagation();
             }}
-            className="peer/website"
+            className="peer/website md:hidden"
+          >
+            {project.website_title}
+          </PrismicLink>
+        </div>
+        <div className="relative z-10 flex justify-end md:justify-between lg:px-1 items-start">
+          <PrismicLink
+            field={project.website}
+            onClick={(event: React.MouseEvent) => {
+              event.stopPropagation();
+            }}
+            className="peer/website hidden md:inline-block"
           >
             {project.website_title}
           </PrismicLink>
@@ -172,7 +181,7 @@ export const Project = forwardRef<
       <ul
         className={clsx(
           "flex flex-col",
-          "lg:grid lg:grid-cols-2 bg-white",
+          "lg:grid lg:grid-cols-2 bg-white min-h-0",
           "gsap:list"
         )}
       >
@@ -191,20 +200,16 @@ export const Project = forwardRef<
               },
               videoIndex
             ) => (
-              <li
+              <VideoFile
                 key={index + "_" + videoIndex}
-                className="w-full flex flex-col"
-              >
-                <VideoFile
-                  hasLoadingEnded={hasLoadingEnded}
-                  url={primary.main.url}
-                  lineUrl={primary.line.url}
-                  index={videoIndex}
-                  projectIndex={index}
-                  length={project.gallery.length - 1}
-                  open={open}
-                />
-              </li>
+                hasLoadingEnded={hasLoadingEnded}
+                url={primary.main.url}
+                lineUrl={primary.line.url}
+                index={videoIndex}
+                projectIndex={index}
+                length={project.slices.length - 1}
+                open={open}
+              />
             )
           )}
       </ul>

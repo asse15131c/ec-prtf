@@ -109,7 +109,7 @@ export function VideoFile({
   }, [isIntersecting, open, projectIndex, videoRef]);
 
   return (
-    <div
+    <li
       className={clsx(
         "relative h-0 transform-gpu overflow-hidden bg-black/10",
         "gsap:videofile",
@@ -133,7 +133,7 @@ export function VideoFile({
         },
         // "pb-[116.54%]"
         {
-          "pb-[6px]": projectIndex > 1,
+          "pb-[1%]": projectIndex > 1,
           "pb-[116.54%]": projectIndex === 1,
         }
       )}
@@ -145,7 +145,7 @@ export function VideoFile({
         data-src={url}
         muted
         loop
-        autoPlay={!open}
+        // autoPlay={!open}
         playsInline
         webkit-playsinline="true"
         className={clsx(
@@ -163,7 +163,7 @@ export function VideoFile({
         data-src={lineUrl}
         muted
         loop
-        autoPlay={open}
+        // autoPlay={open}
         playsInline
         webkit-playsinline="true"
         className={clsx(
@@ -175,6 +175,6 @@ export function VideoFile({
         )}
         preload="none"
       />
-    </div>
+    </li>
   );
 }

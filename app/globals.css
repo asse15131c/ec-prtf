@@ -47,5 +47,5 @@ body {
 }
 
 a {
-  @apply inline-flex text-blue underline pt-0.5 pb-[2px] hover:bg-blue hover:text-white hover:animate-blink;
+  @apply inline-flex text-blue underline pb-[2px] hover:bg-blue hover:text-white hover:animate-blink;
 }

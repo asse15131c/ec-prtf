@@ -18,12 +18,12 @@ export default async function Home() {
       "project.website_title",
       "project.website",
       "project.description",
-      "project.gallery",
+      // "project.gallery",
     ],
   });
 
   return (
-    <main className={clsx("grid bg-white", "md:grid-cols-2", "lg:grid-cols-3")}>
+    <main className={clsx("grid", "md:grid-cols-2", "lg:grid-cols-3")}>
       <Homepage page={page} />
     </main>
   );

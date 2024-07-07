@@ -29,32 +29,45 @@ export function Header() {
   return (
     <header
       className={clsx(
-        "grid grid-cols-2 p-sm z-0 pb-12 bg-white",
-        "md:h-screen md:pb-base md:z-10 md:sticky md:top-0"
+        "grid md:grid-cols-2 p-sm z-0 pb-12 gap-8",
+        "md:h-screen md:pb-base md:z-10 md:sticky md:top-0 md:gap-0"
       )}
     >
       <div
         className={clsx(
-          "flex flex-col justify-between gap-lg h-full",
+          "flex flex-col justify-between gap-8 h-full",
           "lg:gap-0"
         )}
       >
-        <div className="flex flex-col gap-0.5">
+        <div className={clsx("grid grid-cols-2", "md:flex md:flex-col")}>
           <h1 className="gsap:scrumble">Elena Catani</h1>
           <p className="gsap:scrumble text-darkgrey">
             Web Development & <br /> Graphic Design
           </p>
         </div>
-        <div className="flex flex-col gap-0.5">
-          <h1 className={clsx("gsap:scrumble")}>Social</h1>
-          <div className="flex items-end">
-            <a target="_blank" href="https://github.com/asse15131c">
-              Github
-            </a>
-            <span className="mr-1">,</span>
-            <a target="_blank" href="https://www.linkedin.com/in/elena-catani/">
-              LinkedIn
-            </a>
+        <div className={clsx("grid grid-cols-2", "md:grid-cols-1")}>
+          <div className="flex flex-col">
+            <h1 className={clsx("gsap:scrumble")}>Social</h1>
+            <div className="flex items-end">
+              <a target="_blank" href="https://github.com/asse15131c">
+                Github
+              </a>
+              <span className="mr-1">,</span>
+              <a
+                target="_blank"
+                href="https://www.linkedin.com/in/elena-catani/"
+              >
+                LinkedIn
+              </a>
+            </div>
+          </div>
+          <div className="md:hidden flex-col items-start flex">
+            <h1 className={clsx("gsap:scrumble")}>Get in touch</h1>
+            <div className="flex flex-col">
+              <a href="mailto:catani.elena1@gmail.com">
+                catani.elena1@gmail.com
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -66,7 +79,12 @@ export function Header() {
       >
         <div className={clsx("flex flex-col gap-md ", "lg:gap-0")}>
           <h3 className={clsx("lg:mb-0.5", "gsap:scrumble")}>Experiences</h3>
-          <ul className="flex flex-col gap-base text-darkgrey">
+          <ul
+            className={clsx(
+              "grid grid-cols-2 gap-base text-darkgrey",
+              "md:flex md:flex-col"
+            )}
+          >
             {work.map(({ title, place, year, field }, index) => (
               <li key={index} className="w-full flex flex-col">
                 <span>{title}</span>
@@ -77,7 +95,7 @@ export function Header() {
             ))}
           </ul>
         </div>
-        <div className="flex flex-col gap-0.5 items-start">
+        <div className="md:flex flex-col items-start hidden">
           <h1 className={clsx("gsap:scrumble")}>Get in touch</h1>
           <div className="flex flex-col">
             <a href="mailto:catani.elena1@gmail.com">catani.elena1@gmail.com</a>

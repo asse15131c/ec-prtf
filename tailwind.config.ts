@@ -36,7 +36,7 @@ const config: Config = {
       },
     },
     fontSize: {
-      base: "12px", // 17px
+      base: "0.6875rem", // 11px
     },
     colors: {
       grey: "#EEEEEE",
