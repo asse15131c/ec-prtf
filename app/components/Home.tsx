@@ -22,7 +22,7 @@ export function Home({ page }: { page: IndexDocument }) {
   const [hasLoadingEnded, setHasLoadingEnded] = useState<boolean>(false);
   const projects = page.data.projects;
   const projectRefs = useMemo(
-    () => projects.map(() => createRef<HTMLLIElement>()),
+    () => projects.map(() => createRef<HTMLDivElement>()),
     [projects]
   );
 
