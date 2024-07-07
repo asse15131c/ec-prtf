@@ -13,7 +13,7 @@ import { VideoFile } from "./VideoFile";
 gsap.registerPlugin(ScrollTrigger);
 
 export const Project = forwardRef<
-  HTMLLIElement,
+  HTMLDivElement,
   {
     project: ProjectDocumentData;
     index: number;
