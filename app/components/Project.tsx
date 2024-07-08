@@ -73,8 +73,8 @@ export const Project = forwardRef<
         )}
         ref={headerRef}
       >
-        <div className="w-full flex flex-col gap-0.5 lg:px-1 py-1 lg:py-0 relative z-10">
-          <h5>
+        <div className="w-full flex flex-col lg:px-1 relative z-10">
+          <h5 className="mb-0.5">
             {project.title}, {project.type}.
           </h5>
           <p className={clsx("text-darkgrey")}>

@@ -39,14 +39,16 @@ export function Header() {
           "lg:gap-0"
         )}
       >
-        <div className={clsx("grid grid-cols-2", "md:flex md:flex-col")}>
+        <div
+          className={clsx("grid grid-cols-2", "md:flex md:flex-col md:gap-0.5")}
+        >
           <h1 className="gsap:scrumble">Elena Catani</h1>
           <p className="gsap:scrumble text-darkgrey">
             Web Development & <br /> Graphic Design
           </p>
         </div>
         <div className={clsx("grid grid-cols-2", "md:grid-cols-1")}>
-          <div className="flex flex-col">
+          <div className="flex flex-col gap-0.5">
             <h1 className={clsx("gsap:scrumble")}>Social</h1>
             <div className="flex items-end">
               <a target="_blank" href="https://github.com/asse15131c">
@@ -61,7 +63,7 @@ export function Header() {
               </a>
             </div>
           </div>
-          <div className="md:hidden flex-col items-start flex">
+          <div className="md:hidden flex-col items-start flex gap-0.5">
             <h1 className={clsx("gsap:scrumble")}>Get in touch</h1>
             <div className="flex flex-col">
               <a href="mailto:catani.elena1@gmail.com">
@@ -77,7 +79,7 @@ export function Header() {
           "md:h-full md:flex md:flex-col md:justify-between md:gap-0"
         )}
       >
-        <div className={clsx("flex flex-col gap-md ", "lg:gap-0")}>
+        <div className={clsx("flex flex-col gap-0.5", "lg:gap-0")}>
           <h3 className={clsx("lg:mb-0.5", "gsap:scrumble")}>Experiences</h3>
           <ul
             className={clsx(
