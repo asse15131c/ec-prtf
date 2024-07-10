@@ -2,7 +2,14 @@
 
 import { type IndexDocument } from "@/prismicio-types";
 
-import { createRef, useEffect, useMemo, useRef, useState } from "react";
+import {
+  EventHandler,
+  createRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { CustomEase } from "gsap/CustomEase";
@@ -18,7 +25,7 @@ CustomEase.create("custom.scroll", "0.25, 1, 0.5, 1");
 
 export function Home({ page }: { page: IndexDocument }) {
   const ref = useRef(null!);
-  const tl = useRef(gsap.timeline()).current;
+  const tl = useRef(gsap.timeline({ paused: true })).current;
   const [hasLoadingEnded, setHasLoadingEnded] = useState<boolean>(false);
   const projects = page.data.projects;
   const projectRefs = useMemo(
@@ -41,11 +48,15 @@ export function Home({ page }: { page: IndexDocument }) {
           stagger: 0.1,
         }
       );
+
       tl.add(() => {
         setHasLoadingEnded(true);
+        window.removeEventListener("assets-loaded", animate);
       });
 
-      // setHasLoadingEnded(true);
+      const animate = () => tl.play();
+
+      window.addEventListener("assets-loaded", animate);
     },
     {
       scope: projectRefs[0],
