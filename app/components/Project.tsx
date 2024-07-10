@@ -23,6 +23,16 @@ export const Project = forwardRef<
   const headerRef = useRef(null!);
   const tl = useRef(gsap.timeline()).current;
   const [open, setOpen] = useState<boolean>(index === 1);
+  const loadedItems = useRef<Array<number>>([]);
+
+  const onLoaded = (videoIndex: number) => {
+    loadedItems.current[videoIndex] = videoIndex;
+
+    if (loadedItems.current.length === project.slices.length && index === 1) {
+      const event = new Event("assets-loaded");
+      window.dispatchEvent(event);
+    }
+  };
 
   const onClick = () => {
     gsap.context(() => {
@@ -210,6 +220,7 @@ export const Project = forwardRef<
                 projectIndex={index}
                 length={project.slices.length - 1}
                 open={open}
+                onLoaded={() => onLoaded(videoIndex)}
               />
             )
           )}

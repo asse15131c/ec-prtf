@@ -12,7 +12,6 @@ const neueHaasUnica = localFont({
   src: [
     {
       path: "./NeueHaasUnica-Medium.woff2",
-
       weight: "700",
       style: "normal",
     },

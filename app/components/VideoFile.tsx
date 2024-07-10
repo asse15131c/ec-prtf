@@ -11,6 +11,7 @@ export function VideoFile({
   length,
   open,
   lineUrl,
+  onLoaded,
 }: {
   hasLoadingEnded: boolean;
   url: string;
@@ -19,6 +20,7 @@ export function VideoFile({
   length: number;
   open: boolean;
   lineUrl: string;
+  onLoaded: () => void;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const lineVideoRef = useRef<HTMLVideoElement>(null);
@@ -37,6 +39,10 @@ export function VideoFile({
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.addEventListener("canplaythrough", onPlay);
+      // if (projectIndex === 1) {
+      //   onLoaded();
+      //   console.log("enttteerrr");
+      // }
     }
 
     if (lineVideoRef.current) {
@@ -56,6 +62,7 @@ export function VideoFile({
       if (videoRef.current && !videoRef.current.src) {
         videoRef.current.src = videoRef.current.dataset.src!;
         videoRef.current.setAttribute("preload", "auto");
+        onLoaded();
         return;
       }
     }
