@@ -138,7 +138,6 @@ export function VideoFile({
           "shadow-[inset_0px_-1px_0px_0px_rgba(255,255,255,1)] lg:shadow-[inset_-1px_0px_0px_0px_rgba(255,255,255,1)]":
             index % 2 == 0 && length <= 2,
         },
-        // "pb-[116.54%]"
         {
           "pb-[1%]": projectIndex > 1,
           "pb-[116.54%]": projectIndex === 1,
