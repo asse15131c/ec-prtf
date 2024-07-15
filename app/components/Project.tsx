@@ -127,7 +127,7 @@ export const Project = forwardRef<
           </PrismicLink>
           <button
             className={clsx(
-              "text-black bg-grey py-sm px-md rounded-full h-auto ",
+              "text-black bg-grey px-sm h-auto ",
               "group-[.is-loading]/project:bg-blue group-[.is-loading]/project:text-white group-[.is-loading]/project:animate-blink",
               "group-hover/project:bg-blue group-hover/project:text-white group-hover/project:animate-blink",
               "peer-hover/website:animate-none peer-hover/website:bg-transparent peer-hover/website:text-blue"
