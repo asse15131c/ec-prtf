@@ -5,7 +5,7 @@ export function Header() {
     {
       title: "Frontend developer",
       place: "Six Socks Studio",
-      year: "2022— ongoing",
+      year: "2022—Ongoing",
     },
     {
       title: "Graphic designer",
