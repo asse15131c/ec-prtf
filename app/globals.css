@@ -43,7 +43,7 @@ body {
   min-height: 100%;
   overscroll-behavior: none;
   overflow-y: scroll;
-  @apply font-neueHaasUnica text-base text-black leading-none;
+  @apply font-neueHaasUnica text-base text-black leading-none bg-white;
 }
 
 a {

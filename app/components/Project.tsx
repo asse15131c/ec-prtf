@@ -72,11 +72,10 @@ export const Project = forwardRef<
         tabIndex={0}
         className={clsx(
           "group/project",
-          "sticky top-0 z-10 p-sm ",
+          "sticky top-0 z-10 p-sm",
           "grid grid-cols-2 gap-sm",
           "lg:gap-0 lg:px-0 bg-white",
           "hover:bg-grey",
-          // "focus:bg-grey"
           {
             "is-loading": !hasLoadingEnded && index === 1,
           }
@@ -89,19 +88,7 @@ export const Project = forwardRef<
           </h5>
           <p className={clsx("text-darkgrey")}>
             {project.credits && (
-              <span>
-                Credits to {project.credits_title}{" "}
-                {/* Credits to{" "}
-                <PrismicLink
-                  field={project.credits}
-                  className={clsx(
-                    "lowercase",
-                    "hover:bg-darkgrey hover:text-white"
-                  )}
-                >
-                  {project.credits_title}
-                </PrismicLink>{" "} */}
-              </span>
+              <span>Credits to {project.credits_title} </span>
             )}
             &#40;{project.year}&#41;
           </p>
@@ -135,15 +122,14 @@ export const Project = forwardRef<
             )}
           >
             {open ? "Close" : "View"}
-            {/* [{open ? "Close" : "View"}] */}
           </button>
         </div>
-        <div
+        {/* <div
           className={clsx(
             "h-[4px] bg-white absolute top-full left-0 right-0 scale-x-0 origin-left z-10 backdrop-blur-md",
             "gsap:status"
           )}
-        ></div>
+        ></div> */}
       </div>
       {/* <ul
         className={clsx(
